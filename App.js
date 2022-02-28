@@ -1,9 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useFonts } from "expo-font";
 import { typography } from './src/theme';
 import Text from './src/components/text/text';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
 export default function App() {
    const [loaded] = useFonts({
     'Antonio-Medium':require('./assets/fonts/Antonio-Medium.ttf'),
@@ -12,16 +24,18 @@ export default function App() {
    });
 
    if (!loaded) {
-     return <Text>
-       Loading..
-     </Text>
+     return <ActivityIndicator/>
+   } else{
+return (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen}/>
+      {/* <Stack.Screen name="Details" component={DetailsScreen}/> */}
+    </Stack.Navigator>
+  </NavigationContainer>
+);
    }
-  return (
-    <View style={styles.container}>
-      <Text preset='h3'>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  
 }
 
 const styles = StyleSheet.create({
