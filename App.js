@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useFonts } from "expo-font";
 import { typography } from './src/theme';
+import Text from './src/components/text/text';
 
 export default function App() {
    const [loaded] = useFonts({
@@ -9,9 +10,15 @@ export default function App() {
     'Spartan-Bold':require('./assets/fonts/Spartan-Bold.ttf'),
     'Spartan-Regular':require('./assets/fonts/Spartan-Regular.ttf'),
    });
+
+   if (!loaded) {
+     return <Text>
+       Loading..
+     </Text>
+   }
   return (
     <View style={styles.container}>
-      <Text style={{fontFamily:typography.bold}} >Open up App.js to start working on your app!</Text>
+      <Text preset='h3'>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
   );
