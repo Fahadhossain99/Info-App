@@ -43,7 +43,7 @@ return (
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
-    <StatusBar barStyle="Light" />
+    {/* <StatusBar barStyle="Light" /> */}
   </NavigationContainer>
 );
  }

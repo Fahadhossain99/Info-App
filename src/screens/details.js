@@ -1,6 +1,7 @@
 import { View,SafeAreaView, ScrollView,StyleSheet, Image, Dimensions, } from 'react-native'
 import React from 'react'
 import Text from '../components/text/text'
+import { colors } from "../theme/colors";
 
 import InfoHeader from './../components/Info-header';
 
@@ -11,10 +12,10 @@ export default function Details({route}) {
     const { topic } = route.params;
     const { name, description, image } = topic;
   return (
-    <SafeAreaView>
-      <InfoHeader />
+    <SafeAreaView style={{ backgroundColor: colors.offwhite, flex: 1 }}>
       <ScrollView>
         <View>
+          <InfoHeader backButton={true} />
           {image ? (
             <Image
               source={image}
